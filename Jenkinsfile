@@ -141,7 +141,7 @@ pipeline {
                 to: 'ashish2024.ak@gmail.com',
                 subject: "Pipeline Broken",
                 body: """
-                <h2>Pipeline Broken</h2>
+                <h2>Pipeline Has Broken!!!</h2>
                 <p><b>Triggered By:</b> ${env.BUILD_USER}</p>
                 <p><b>Job Name:</b> ${env.JOB_NAME}</p>
                 <p><b>Build Number:</b> ${env.BUILD_NUMBER}</p>
