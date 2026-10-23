@@ -7,7 +7,7 @@ pipeline {
     // ALTERNATIVE:
     // Use "agent any" if the pipeline can run on any available Jenkins agent.
     // Do not use both agent declarations at the same time.
-    // agent any
+    // agent any;
 
     environment {
         // Define a variable to store the Docker image name.
@@ -122,7 +122,13 @@ pipeline {
             emailext(
                 to: 'ashish2024.ak@gmail.com',
                 subject: "Pipeline Built Successfully",
-                body: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+                body: """
+                <h2>Pipeline Successful</h2>
+                <p><b>Triggered By:</b> ${env.BUILD_USER}</p>
+                <p><b>Job Name:</b> ${env.JOB_NAME}</p>
+                <p><b>Build Number:</b> ${env.BUILD_NUMBER}</p>
+                <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                """
             )
         }
 
@@ -134,9 +140,14 @@ pipeline {
             emailext(
                 to: 'ashish2024.ak@gmail.com',
                 subject: "Pipeline Broken",
-                body: "BROKEN: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+                body: """
+                <h2>Pipeline Broken</h2>
+                <p><b>Triggered By:</b> ${env.BUILD_USER}</p>
+                <p><b>Job Name:</b> ${env.JOB_NAME}</p>
+                <p><b>Build Number:</b> ${env.BUILD_NUMBER}</p>
+                <p><b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                """
             )
         }
     }
 }
-
