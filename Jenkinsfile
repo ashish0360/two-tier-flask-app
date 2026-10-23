@@ -16,7 +16,7 @@ pipeline{
         stage("buidling clode"){
             steps{
                 echo "buidling the code"
-                sh "dockre build -t two-tier-flask-app ."
+                sh "docker build -t two-tier-flask-app ."
             }
         }
         stage("pushing to docker hub"){
